@@ -65,9 +65,9 @@ enum Transmogrifier {
     let headerData = try handle.read(upToCount: MemoryLayout<mach_header_64>.stride)!
 
     let header: mach_header_64 = headerData.asStruct()
-    if header.magic != MH_MAGIC_64 || header.cputype != CPU_TYPE_ARM64 {
-      throw IncorrectBinaryError()
-    }
+//    if header.magic != MH_MAGIC_64 || header.cputype != CPU_TYPE_ARM64 {
+//      throw IncorrectBinaryError()
+//    }
 
     let loadCommandsData: [Data] = try (0..<header.ncmds).map { _ in
       let loadCommandPeekData = try handle.peek(upToCount: MemoryLayout<load_command>.stride)
